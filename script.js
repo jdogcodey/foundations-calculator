@@ -144,16 +144,20 @@ zeroButton.addEventListener("click", function () {
   console.log(lastButtonPressed);
 });
 decimalButton.addEventListener("click", function () {
-  lastButtonPressed = "operator";
-  if (number1 != 0) {
-    number2 = screenDisplay.textContent;
-    operateFunc(number1, operator, number2);
-  } else {
-    number1 = screenDisplay.textContent;
-    operator = divideFunc;
+  console.log(`Update display initialised with decimal`);
+  // prettier-ignore
+  if ((screenDisplay.textContent === ``) || (lastButtonPressed === `operator`) || (screenDisplay.textContent.includes(`.`))) {
+      console.log(`Decimal with no numbers`);
+    }
+  else if (screenDisplay.textContent.length > 10) {
+    console.log(`Update display did nothing as string too long`);
   }
-  console.log(operator);
+    else {
+      screenDisplay.textContent += `.`;
+      console.log(`Screen display updated to ${screenDisplay.textContent}`);
+    }
 });
+
 divideButton.addEventListener("click", function () {
   console.log(`number 1 i s${number1}`);
   console.log(`number 2 i s${number2}`);
