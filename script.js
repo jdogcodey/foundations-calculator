@@ -1,6 +1,6 @@
 let number1 = 0;
 let number2 = 0;
-let operator;
+let operator = ``;
 let lastButtonPressed = ``;
 
 const screenDisplay = document.querySelector("#display");
@@ -22,10 +22,11 @@ const divideButton = document.querySelector("#division");
 const multiplyButton = document.querySelector(`#multiplication`);
 const subtractButton = document.querySelector(`#subtraction`);
 const addButton = document.querySelector(`#addition`);
+const equalsButton = document.querySelector(`#equals`);
 
 //Addition function
 const addFunc = function (input1, input2) {
-  return input1 + input2;
+  return Number(input1) + Number(input2);
 };
 
 //Subtraction function
@@ -45,7 +46,7 @@ const divideFunc = function (input1, input2) {
 
 // Operation division - inputs 2 numbers and uses the operator chosen on them
 const operateFunc = function (number1, operator, number2) {
-  return operator(number1, number2);
+  screenDisplay.textContent = operator(number1, number2);
 };
 
 const updateDisplay = function (number) {
@@ -108,7 +109,7 @@ zeroButton.addEventListener("click", function () {
 divideButton.addEventListener("click", function () {
   if (number1 != 0) {
     number2 = screenDisplay.textContent;
-    screenDisplay.textContent = operateFunc(number1, operator, number2);
+    operateFunc(number1, operator, number2);
   } else {
     number1 = screenDisplay.textContent;
     operator = divideFunc;
@@ -121,7 +122,7 @@ divideButton.addEventListener("click", function () {
 multiplyButton.addEventListener("click", function () {
   if (number1 != 0) {
     number2 = screenDisplay.textContent;
-    screenDisplay.textContent = operateFunc(number1, operator, number2);
+    operateFunc(number1, operator, number2);
   } else {
     number1 = screenDisplay.textContent;
     lastButtonPressed = "operator";
@@ -132,7 +133,7 @@ multiplyButton.addEventListener("click", function () {
 subtractButton.addEventListener("click", function () {
   if (number1 != 0) {
     number2 = screenDisplay.textContent;
-    screenDisplay.textContent = operateFunc(number1, operator, number2);
+    operateFunc(number1, operator, number2);
   } else {
     number1 = screenDisplay.textContent;
     lastButtonPressed = "operator";
@@ -143,11 +144,16 @@ subtractButton.addEventListener("click", function () {
 addButton.addEventListener("click", function () {
   if (number1 != 0) {
     number2 = screenDisplay.textContent;
-    screenDisplay.textContent = operateFunc(number1, operator, number2);
+    operateFunc(number1, operator, number2);
   } else {
     number1 = screenDisplay.textContent;
     lastButtonPressed = "operator";
     operator = addFunc;
   }
   console.log(operator);
+});
+equalsButton.addEventListener("click", function () {
+  number2 = screenDisplay.textContent;
+  operateFunc(number1, operator, number2);
+  console.log(screenDisplay.textContent);
 });
