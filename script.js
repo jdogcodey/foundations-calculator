@@ -1,5 +1,5 @@
 let number1 = 0;
-let number2 = 0;
+let number2 = ``;
 let operator = ``;
 let lastButtonPressed = ``;
 let calculationComplete = false;
@@ -48,8 +48,18 @@ const divideFunc = function (input1, input2) {
   return input1 / input2;
 };
 
-// Operation division - inputs 2 numbers and uses the operator chosen on them
+// Operation function- inputs 2 numbers and uses the operator chosen on them
 const operateFunc = function (firstNo, operation, secondNo) {
+  console.log(`operation = divideFunc?`);
+  console.log(operation === divideFunc);
+  console.log(operation === multiplyFunc);
+  console.log(secondNo);
+  console.log(secondNo === `0`);
+  //prettier-ignore
+  if ((secondNo === `0`) && (operation === divideFunc)) {
+    screenDisplay.textContent = `ERM...`;
+  }
+  else {
   let answer = operation(firstNo, secondNo);
   console.log(answer);
   if (answer.toString().length > 11) {
@@ -73,6 +83,7 @@ const operateFunc = function (firstNo, operation, secondNo) {
   screenDisplay.textContent = shortAnswer;
   number1 = screenDisplay.textContent;
   number2 = 0;
+}
 };
 
 const updateDisplay = function (number) {
@@ -159,8 +170,6 @@ decimalButton.addEventListener("click", function () {
 });
 
 divideButton.addEventListener("click", function () {
-  console.log(`number 1 i s${number1}`);
-  console.log(`number 2 i s${number2}`);
   lastButtonPressed = "operator";
   if (number1 != 0) {
     number2 = screenDisplay.textContent;
