@@ -52,7 +52,6 @@ const divideFunc = function (input1, input2) {
 const operateFunc = function (firstNo, operation, secondNo) {
   let answer = operation(firstNo, secondNo);
   console.log(answer);
-  console.log(answer.toString().length);
   if (answer.toString().length > 11) {
     console.log(answer % 1);
     if (answer % 1 != 0) {
@@ -78,6 +77,7 @@ const operateFunc = function (firstNo, operation, secondNo) {
 
 const updateDisplay = function (number) {
   console.log(`Update display initialised with ${number}`);
+  console.log(`Update Display Number1 is ${number1} & Number2 is ${number2}`);
   // prettier-ignore
   if ((screenDisplay.textContent === ``) || (lastButtonPressed === `operator`)) {
       console.log(`Update Display adding only one number`);
@@ -165,6 +165,7 @@ divideButton.addEventListener("click", function () {
   if (number1 != 0) {
     number2 = screenDisplay.textContent;
     operateFunc(number1, operator, number2);
+    operator = divideFunc;
   } else {
     number1 = screenDisplay.textContent;
     operator = divideFunc;
@@ -178,6 +179,7 @@ multiplyButton.addEventListener("click", function () {
   if (number1 != 0) {
     number2 = screenDisplay.textContent;
     operateFunc(number1, operator, number2);
+    operator = multiplyFunc;
   } else {
     number1 = screenDisplay.textContent;
     operator = multiplyFunc;
@@ -189,6 +191,7 @@ subtractButton.addEventListener("click", function () {
   if (number1 != 0) {
     number2 = screenDisplay.textContent;
     operateFunc(number1, operator, number2);
+    operator = subtractFunc;
   } else {
     number1 = screenDisplay.textContent;
     operator = subtractFunc;
@@ -200,6 +203,7 @@ addButton.addEventListener("click", function () {
   if (number1 != 0) {
     number2 = screenDisplay.textContent;
     operateFunc(number1, operator, number2);
+    operator = addFunc;
   } else {
     number1 = screenDisplay.textContent;
     operator = addFunc;
