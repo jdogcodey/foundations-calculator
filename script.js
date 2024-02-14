@@ -27,6 +27,7 @@ const addButton = document.querySelector(`#addition`);
 const equalsButton = document.querySelector(`#equals`);
 const decimalButton = document.querySelector(`#decimal`);
 const clearButton = document.querySelector(`#clear`);
+const deleteButton = document.querySelector(`#delete`);
 
 //Addition function
 const addFunc = function (input1, input2) {
@@ -232,4 +233,7 @@ clearButton.addEventListener("click", function () {
   screenDisplay.textContent = ``;
   number1 = 0;
   number2 = 0;
+});
+deleteButton.addEventListener("click", function () {
+  screenDisplay.textContent = screenDisplay.textContent.slice(0, -1);
 });
